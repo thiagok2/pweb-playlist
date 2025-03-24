@@ -41,9 +41,9 @@ volumes:
  
 ```
 6. Levantar container
-   ```
-   docker compose up -d
+```
+	docker compose up -d
 
-   ```
+```
 
 
