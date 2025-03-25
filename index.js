@@ -4,20 +4,21 @@ import Usuarios from './models/Usuario.js'; // Apenas o modelo Usuarios
 	(async () => {
   	try {
     		// Testar a conexão
-   		 await sequelize.authenticate();
-    		console.log('Conexão com o banco de dados estabelecida com sucesso!');
+   		  await sequelize.authenticate();
+    		console.log('database conexão ok!');
+        console.log('Conectado ao banco:', sequelize.config.database, 'no host:', sequelize.config.host);
 
-    		// Sincronizar apenas o modelo Usuarios
-    		await sequelize.sync({ alter: true }); // Cria ou ajusta apenas a tabela 'usuarios'
-    		console.log('Modelo Usuarios sincronizado com o banco de dados.');
+    		await sequelize.sync({alter: true});
+    		console.log('update - modelos');
 
-    		// Teste: criar um usuário
-    		// const novoUsuario = await Usuarios.create({
-      	// 		login: 'teste123',
-      	// 		nome: 'Usuário Teste',
-    		// });
+    		const novoUsuario = await Usuarios.create({
+      			login: 'rebeca5.carolliny',
+      			nome: '123456',
+    		});
 
-    		// console.log('Usuário criado:', novoUsuario.toJSON());
+
+    		const usuarios = await Usuarios.findAll();
+        console.log('Usuários no banco:', usuarios.map(u => u.toJSON()));
   		} catch (error) {
    			console.error('Erro:', error);
  		}

@@ -16,6 +16,10 @@ import sequelize from '../config/database.js';
     			type: DataTypes.STRING(100),
     			allowNull: false,
   		},
+      genero: {
+        type: DataTypes.STRING(2),
+        allowNull: true,
+    },
 	}, {
   	tableName: 'usuario',
   	timestamps: false,
