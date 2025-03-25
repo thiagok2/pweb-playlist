@@ -34,3 +34,4 @@ volumes:
 
 ```
 4. Renomeie `.env.example` para `.env`.
+5. 
