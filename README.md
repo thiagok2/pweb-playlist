@@ -34,4 +34,16 @@ volumes:
 
 ```
 4. Renomeie `.env.example` para `.env`.
-5. 
+
+5. Clonar projeto `https://github.com/00educaio/PWEB2-docker`
+```
+	git clone https://github.com/00educaio/PWEB2-docker
+ 
+```
+6. Levantar container
+```
+	docker compose up -d
+
+```
+
+
