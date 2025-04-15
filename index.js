@@ -12,7 +12,7 @@ import Usuarios from './models/Usuario.js'; // Apenas o modelo Usuarios
     		console.log('update - modelos');
 
     		const novoUsuario = await Usuarios.create({
-      			login: 'rebeca5.carolliny',
+      			login: 'rebeca6.carolliny',
       			nome: '123456',
     		});
 

@@ -1,0 +1,24 @@
+{
+  "name": "Node.js & Postgres Dev Container",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "node",
+  "workspaceFolder": "/app",
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/sh"
+  },
+  "remoteUser": "node",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Node App",
+      "onAutoForward": "notify"
+    }
+  },
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "docker exec postgres psql -U postgres -d postgres -c \"CREATE DATABASE playlist;\" || true"
+}

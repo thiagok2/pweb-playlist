@@ -21,7 +21,7 @@ services:
     ports:
       - "3000:3000"
     command: >
-      sh -c "npm install"   
+      sh -c "npm install && tail -f /dev/null"
     depends_on:
       - postgres
 
