@@ -1,22 +1,21 @@
 import { DataTypes } from 'sequelize';
 
 export default (sequelize) =>
-  sequelize.define('Usuario', {
+  sequelize.define('CanalFilme', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    login: {
-      type: DataTypes.STRING(50),
+    id_canal: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
     },
-    nome: {
-      type: DataTypes.STRING(100),
+    id_filme: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   }, {
-    tableName: 'usuarios',
+    tableName: 'canal_filmes',
     timestamps: false,
   });
