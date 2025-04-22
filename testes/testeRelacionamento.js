@@ -1,4 +1,4 @@
-import { Usuario, Filme, Comentario } from '../models/index.js';
+import { Usuario, Filme, Comentario } from '../models/Index.js';
 import sequelize from '../config/database.js'; // Importa a instância do Sequelize
 
 async function testRelacionamento() {

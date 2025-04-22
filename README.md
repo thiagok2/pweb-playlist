@@ -45,5 +45,11 @@ volumes:
 	docker compose up -d
 
 ```
+7. Rodar Testes
 
+```
+  node testes/testeDatabase
+  node testes/testeModel
+  node testes/testeRelacionamento
+```
 
