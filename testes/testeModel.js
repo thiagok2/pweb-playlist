@@ -1,5 +1,5 @@
 import sequelize from '../config/database.js'; // Importa a instância do Sequelize
-import { Usuario } from '../models/index.js'; // Importa o modelo do Usuário
+import { Usuario } from '../models/Index.js'; // Importa o modelo do Usuário
 
 async function testModels() {
   try {

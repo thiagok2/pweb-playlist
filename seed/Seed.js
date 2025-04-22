@@ -7,7 +7,7 @@ import {
   CanalFilme,
   Playlist,
   Comentario,
-} from '../models/index.js';
+} from '../models/Index.js';
 
 const seed = async () => {
   try {
