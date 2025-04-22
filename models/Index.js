@@ -5,12 +5,14 @@ import CanalModel from './Canal.js';
 import CanalFilmeModel from './CanalFilme.js';
 import PlaylistModel from './Playlist.js';
 import ComentarioModel from './Comentario.js';
+import PlaylistFilmeModel from './PlaylistFilme.js';
 
 const Usuario = UsuarioModel(sequelize);
 const Filme = FilmeModel(sequelize);
 const Canal = CanalModel(sequelize);
 const CanalFilme = CanalFilmeModel(sequelize);
 const Playlist = PlaylistModel(sequelize);
+const PlaylistFilme = PlaylistFilmeModel(sequelize);
 const Comentario = ComentarioModel(sequelize);
 
 // RELACIONAMENTOS
@@ -42,6 +44,9 @@ Comentario.belongsTo(Usuario, { foreignKey: 'id_usuario' });
 Filme.hasMany(Comentario, { foreignKey: 'id_filme' });
 Comentario.belongsTo(Filme, { foreignKey: 'id_filme' });
 
+Playlist.hasMany(PlaylistFilme, {foreignKey: 'id_playlist'});
+PlaylistFilme.belongsTo(Playlist, {foreignKey:'id_playlist'});
+
 export {
   Usuario,
   Filme,
@@ -49,4 +54,5 @@ export {
   CanalFilme,
   Playlist,
   Comentario,
+  PlaylistFilme
 };

@@ -11,28 +11,13 @@ export default (sequelize) =>
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    id_canal: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    nome: {
+      type: DataTypes.STRING,
+      length: 100
     },
-    id_filme: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    assistido: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-    tempo_assistido: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    nota_avaliacao_usuario: {
-      type: DataTypes.INTEGER,
-      validate: {
-        min: 1,
-        max: 5,
-      },
+    data_criacao: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
     },
   }, {
     tableName: 'playlists',

@@ -15,6 +15,9 @@ export default (sequelize) =>
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    data_recomendacao: {
+      type: DataTypes.DATE
+    }
   }, {
     tableName: 'canal_filmes',
     timestamps: false,

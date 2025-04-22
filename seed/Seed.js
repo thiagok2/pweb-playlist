@@ -7,11 +7,13 @@ import {
   CanalFilme,
   Playlist,
   Comentario,
+  PlaylistFilme
 } from '../models/Index.js';
 
 const seed = async () => {
   try {
     await sequelize.sync({ force: true }); // cuidado: isso apaga e recria tudo
+    //await sequelize.sync({ alter: true });
 
     // Usuários
     const usuarios = await Usuario.bulkCreate([
@@ -47,12 +49,20 @@ const seed = async () => {
     ]);
 
     // Playlists
-    await Playlist.bulkCreate([
-      { id_usuario: usuarios[0].id, id_canal: canais[0].id, id_filme: filmes[0].id, assistido: true, tempo_assistido: 120, nota_avaliacao_usuario: 5 },
-      { id_usuario: usuarios[1].id, id_canal: canais[1].id, id_filme: filmes[2].id, assistido: true, tempo_assistido: 195, nota_avaliacao_usuario: 4 },
-      { id_usuario: usuarios[2].id, id_canal: canais[2].id, id_filme: filmes[1].id, assistido: false, tempo_assistido: 0, nota_avaliacao_usuario: null },
-      { id_usuario: usuarios[3].id, id_canal: canais[0].id, id_filme: filmes[4].id, assistido: true, tempo_assistido: 136, nota_avaliacao_usuario: 5 },
-      { id_usuario: usuarios[0].id, id_canal: canais[1].id, id_filme: filmes[3].id, assistido: false, tempo_assistido: 30, nota_avaliacao_usuario: 3 },
+    const playlist = await Playlist.bulkCreate([
+      { id_usuario: usuarios[0].id, nome: "joaodasilva filmes"},
+      { id_usuario: usuarios[1].id, nome: "mariasantos filmes"},
+      { id_usuario: usuarios[2].id, nome: "pedrocosta filmes" },
+      { id_usuario: usuarios[3].id, nome: "analuiza filmes"}
+    ]);
+
+
+    await PlaylistFilme.bulkCreate([
+      { id_playlist: playlist[0].id, id_canal: canais[0].id, id_filme: filmes[0].id, assistido: true, tempo_assistido: 120, nota_avaliacao_usuario: 5 },
+      { id_playlist: playlist[1].id, id_canal: canais[1].id, id_filme: filmes[2].id, assistido: true, tempo_assistido: 195, nota_avaliacao_usuario: 4 },
+      { id_playlist: playlist[2].id, id_canal: canais[2].id, id_filme: filmes[1].id, assistido: false, tempo_assistido: 0, nota_avaliacao_usuario: null },
+      { id_playlist: playlist[3].id, id_canal: canais[0].id, id_filme: filmes[4].id, assistido: true, tempo_assistido: 136, nota_avaliacao_usuario: 5 },
+      { id_playlist: playlist[0].id, id_canal: canais[1].id, id_filme: filmes[3].id, assistido: false, tempo_assistido: 30, nota_avaliacao_usuario: 3 },
     ]);
 
     // Comentários
