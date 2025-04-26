@@ -12,18 +12,18 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  # node:
-  #   image: node:latest
-  #   container_name: node_app
-  #   working_dir: /app
-  #   volumes:
-  #     - .:/app
-  #   ports:
-  #     - "3000:3000"
-  #   command: >
-  #     sh -c "npm install && tail -f /dev/null"
-  #   depends_on:
-  #     - postgres
+  node:
+    image: node:18
+    container_name: node_app
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: >
+      sh -c "npm install && tail -f /dev/null"
+    depends_on:
+      - postgres
 
 volumes:
   postgres_data:
