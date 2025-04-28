@@ -1,5 +1,5 @@
-import sequelize from './config/database.js';
-import UsuarioModel from './models/Usuario.js';
+import sequelize from '../config/database.js';
+import UsuarioModel from '../models/Usuario.js';
 
 // Inicializa o modelo com a instância do Sequelize
 const Usuario = UsuarioModel(sequelize);
