@@ -22,7 +22,7 @@ const Usuario = UsuarioModel(sequelize);
 
     // Cria um novo usuário
     const novoUsuario = await Usuario.create({
-      login: 'rebeca12.carolliny',
+      login: 'rebeca13.carolliny',
       nome: 'Rebeca Carolliny',
     });
 
