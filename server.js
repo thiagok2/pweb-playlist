@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 app.get('/version', (req, res) => {
-  res.json({ status: 'ok', version: '1.0.0' });
+  res.json({ status: 'ok', version: '1.0.1' });
 });
 
 app.use('/usuarios', usuarioRoutes);

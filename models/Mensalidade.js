@@ -32,7 +32,7 @@ export default (sequelize) =>
       validate: {
         isValidAnoMes(value) {
           if (!/^\d{4}-\d{2}$/.test(value)) {
-            throw new Error('Formato de ano_mes deve ser YYYY-MM');
+            throw new Error('Formato de ano_mes deve ser YYYY-MM'); /** 2024-03. 2023-09 */
           }
           const [ano, mes] = value.split('-').map(Number);
           if (mes < 1 || mes > 12) {

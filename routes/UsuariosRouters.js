@@ -1,5 +1,6 @@
 import express from 'express';
 import { Usuario } from '../models/Index.js';
+
 const router = express.Router();
 
 router.get('/', async (_req, res) => {
