@@ -1,35 +1,52 @@
-import sequelize from '../config/database.js';
-import UsuarioModel from '../models/Usuario.js';
+import { expect } from 'chai';
+import { sequelize, db } from './setup.js';
 
-// Inicializa o modelo com a instância do Sequelize
-const Usuario = UsuarioModel(sequelize);
-
-(async () => {
-  try {
-    // Testar a conexão
-    await sequelize.authenticate();
-    console.log('Database conexão ok!');
-    console.log(
-      'Conectado ao banco:',
-      sequelize.config.database,
-      'no host:',
-      sequelize.config.host
-    );
-
-    // Sincroniza os modelos
-    await sequelize.sync({ alter: true });
-    console.log('Update - modelos');
-
-    // Cria um novo usuário
-    const novoUsuario = await Usuario.create({
-      login: 'rebeca12.carolliny',
-      nome: 'Rebeca Carolliny',
+describe('Canal Model', () => {
+  it('Deve criar um canal com dados válidos', async () => {
+    const canal = await db.Canal.create({
+      nome: 'Canal Teste',
+      data_criacao: '2023-01-01',
+      genero_tema: 'Entretenimento',
     });
 
-    // Busca todos os usuários
-    const usuarios = await Usuario.findAll();
-    console.log('Usuários no banco:', usuarios.map((u) => u.toJSON()));
-  } catch (error) {
-    console.error('Erro:', error);
-  }
-})();
+    expect(canal).to.have.property('id');
+    expect(canal.nome).to.equal('Canal Teste');
+    expect(canal.genero_tema).to.equal('Entretenimento');
+  });
+
+  it('Não deve criar um canal sem nome', async () => {
+    try {
+      await db.Canal.create({
+        data_criacao: '2023-01-01',
+        genero_tema: 'Entretenimento',
+      });
+      expect.fail('Deveria ter lançado um erro de validação');
+    } catch (error) {
+      expect(error.name).to.equal('SequelizeValidationError');
+    }
+  });
+
+  it('Não deve criar um canal sem data_criacao', async () => {
+    try {
+      await db.Canal.create({
+        nome: 'Canal Sem Data',
+        genero_tema: 'Entretenimento',
+      });
+      expect.fail('Deveria ter lançado um erro de validação');
+    } catch (error) {
+      expect(error.name).to.equal('SequelizeValidationError');
+    }
+  });
+
+  it('Não deve criar um canal sem genero_tema', async () => {
+    try {
+      await db.Canal.create({
+        nome: 'Canal Sem Tema',
+        data_criacao: '2023-01-01',
+      });
+      expect.fail('Deveria ter lançado um erro de validação');
+    } catch (error) {
+      expect(error.name).to.equal('SequelizeValidationError');
+    }
+  });
+});

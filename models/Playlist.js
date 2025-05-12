@@ -13,7 +13,7 @@ export default (sequelize) =>
     },
     id_canal: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     id_filme: {
       type: DataTypes.INTEGER,
