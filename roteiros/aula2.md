@@ -49,9 +49,9 @@ models/Usuarios.js
 	export default Usuarios;
 ```
 
-11. Vamos atualizar o index para ele criar um registro de usuario.
+11. Vamos atualizar o server para ele criar um registro de usuario.
 
-index.js
+server.js
 ```js
 	import sequelize from './config/database.js';
 	import Usuarios from './models/Usuarios.js'; // Apenas o modelo Usuarios
@@ -83,5 +83,3 @@ Rodar o projeto
 ```sh
 	node index.js
 ```
-
-Nu

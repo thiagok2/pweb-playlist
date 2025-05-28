@@ -16,6 +16,15 @@ export default (sequelize) =>
       type: DataTypes.STRING(100),
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+      validate: {
+        isEmail: {
+          msg: 'O campo precisa conter um e-mail válido.',
+        },
+      },
+    },
   }, {
     tableName: 'usuarios',
     timestamps: false,
