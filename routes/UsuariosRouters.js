@@ -59,6 +59,7 @@ router.get('/', async (req, res) => {
     const usuarios = await Usuario.findAll();
     res.json(usuarios);
   } catch (err){
+    console.log(err);
     return res.status(500).json({ error: 'Erro recuperar usuários', details: err });
   }
 });

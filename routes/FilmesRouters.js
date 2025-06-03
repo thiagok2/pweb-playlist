@@ -53,6 +53,38 @@ router.get('/por-genero/:genero', async (req, res) => {
   }
 });
 
+// GET /filmes/ultimos-lancamentos - últimos 10 lançamentos por ano, desempate por createdAt
+router.get('/ultimos-lancamentos', async (req, res) => {
+  try {
+    const filmes = await Filme.findAll({
+      order: [
+        ['ano_lancamento', 'DESC'],
+        ['created_at', 'DESC']
+      ],
+      limit: 10,
+    });
+    res.json(filmes);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao buscar últimos lançamentos', details: err.message });
+  }
+});
+
+// GET /filmes/melhores-avaliados - top 10 por nota_avaliacao
+router.get('/melhores-avaliados', async (req, res) => {
+  try {
+    const filmes = await Filme.findAll({
+      order: [
+        ['nota_avaliacao', 'DESC'],
+        ['created_at', 'DESC']
+      ],
+      limit: 10,
+    });
+    res.json(filmes);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao buscar melhores avaliados', details: err.message });
+  }
+});
+
 
 // GET /filmes - listar todos
 router.get('/', async (req, res) => {
