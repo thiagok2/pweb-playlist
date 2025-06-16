@@ -23,30 +23,37 @@ os artifícios do sequelize:
 models/Usuarios.js
 
 ```js
-	import { DataTypes } from 'sequelize';
-	import sequelize from '../config/database.js';
+import { DataTypes } from 'sequelize';
 
-	const Usuarios = sequelize.define('Usuarios', {
-  		id: {
-    			type: DataTypes.INTEGER,
-    			primaryKey: true,
-    			autoIncrement: true,
-  		},
-  		login: {
-    			type: DataTypes.STRING(50),
-    			allowNull: false,
-    			unique: true,
-  		},
-  		nome: {
-    			type: DataTypes.STRING(100),
-    			allowNull: false,
-  		},
-	}, {
-  	tableName: 'usuario',
-  	timestamps: false,
-	});
+export default (sequelize) => {
+  const Usuario = sequelize.define('Usuario', {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    login: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      unique: true,
+    },
+    nome: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    data_nascimento: {
+      type: DataTypes.DATEONLY
+    },
+    email: {
+      type: DataTypes.STRING(100)
+    }
+  }, {
+    tableName: 'usuarios',
+    timestamps: false,
+  });
 
-	export default Usuarios;
+  return Usuario;
+};
 ```
 
 11. Vamos atualizar o server para ele criar um registro de usuario.
@@ -54,7 +61,7 @@ models/Usuarios.js
 server.js
 ```js
 	import sequelize from './config/database.js';
-	import Usuarios from './models/Usuarios.js'; // Apenas o modelo Usuarios
+	import Usuario from './models/Usuario.js'; // Apenas o modelo Usuarios
 
 	(async () => {
   	try {
@@ -67,7 +74,7 @@ server.js
     		console.log('Modelo Usuarios sincronizado com o banco de dados.');
 
     		// Teste: criar um usuário
-    		const novoUsuario = await Usuarios.create({
+    		const novoUsuario = await Usuario.create({
       			login: 'teste123',
       			nome: 'Usuário Teste',
     		});
