@@ -2,7 +2,7 @@
 
 Vamos agora criar a estrutura do projeto para o exemplo do playlist.
 Veja como ele vai ficar a organização.
-
+'''
 seu-projeto-playlist/
 ├── config/
 │   └── database.js
@@ -16,6 +16,7 @@ seu-projeto-playlist/
 ├── .env
 ├── index.js
 └── package.json
+'''
 
 10.1 Vamos criar o arquivo Usuarios.js dentro da pasta models. Esse arquivo vai criar a classe e mapear as colunas usando 
 os artifícios do sequelize:
