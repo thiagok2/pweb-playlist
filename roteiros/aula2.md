@@ -2,6 +2,7 @@
 
 Vamos agora criar a estrutura do projeto para o exemplo do playlist.
 Veja como ele vai ficar a organização.
+
 '''
 seu-projeto-playlist/
 ├── config/
